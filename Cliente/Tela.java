@@ -25,6 +25,9 @@ import java.io.ByteArrayOutputStream;
  */
 public class Tela extends javax.swing.JFrame {
 
+    private static String IP;
+    private static int PORTA;
+
     /**
      * Creates new form Tela
      */
@@ -152,16 +155,19 @@ public class Tela extends javax.swing.JFrame {
 
 //            AplicaFiltroInterface afi = (AplicaFiltroInterface) rgty.lookup("AplicaFiltro");
             
-            AplicaFiltroInterface afi = (AplicaFiltroInterface) Naming.lookup("rmi://192.168.0.108:12345/AplicaFiltro");
+            System.out.println("rmi://"+IP+":"+PORTA+"/AplicaFiltro");
+            AplicaFiltroInterface afi = (AplicaFiltroInterface) Naming.lookup("rmi://"+IP+":"+PORTA+"/AplicaFiltro");
 
             fileImg = new File(nameImg);
             
             image = ImageIO.read(fileImg);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             javax.imageio.ImageIO.write(image, "jpg", baos);
+            System.out.println("Enviando imagem");
             image = javax.imageio.ImageIO.read(new ByteArrayInputStream(afi.aplicaFiltro(baos.toByteArray())));
             // image = afi.aplicaFiltro(ImageIO.read(fileImg));
-            
+            System.out.println("Imagem enviada");
+            System.out.println("Imagem recebida");
             ImageIcon ii = new ImageIcon(image);
             Image image = ii.getImage();
             Image newimg = image.getScaledInstance(215, 175,  java.awt.Image.SCALE_SMOOTH);
@@ -181,6 +187,9 @@ public class Tela extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        IP = args[0];
+        PORTA = Integer.parseInt(args[1]);
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

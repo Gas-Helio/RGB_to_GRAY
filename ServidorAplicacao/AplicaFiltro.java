@@ -29,16 +29,20 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
     
     @Override
     public byte[] aplicaFiltro(byte[] img) throws RemoteException {
+        System.out.println("alo");
         try {
 
             BufferedImage image = javax.imageio.ImageIO.read(new ByteArrayInputStream(img));
 
             System.out.println("Imagem recebida");
-            for(int x=0; x < image.getHeight() - 1; x++) {
-                for(int y=0; y < image.getWidth() - 1; y++) {
-                    System.out.println("x = " + x + ", y = " + y);
+            
+            // System.out.println(image.getHeight()+" x "+image.getWidth());
+
+            for(int x=0; x < image.getHeight(); x++) {
+                for(int y=0; y < image.getWidth(); y++) {
+                    // System.out.println("x = " + x + ", y = " + y);
                     // Get current pixel color.
-                    Color color = new Color(image.getRGB(x, y));
+                    Color color = new Color(image.getRGB(y, x));
 
                     // Turn red, green, blue into grayscale.
                     red = (int) (color.getRed() * 0.299);
@@ -50,7 +54,7 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
                     Color gray = new Color(newRGB, newRGB, newRGB);
 
                     // Set new grayscale color.
-                    image.setRGB(x, y, gray.getRGB());
+                    image.setRGB(y, x, gray.getRGB());
                 }
             }
             System.out.println("Imagem convertida");
