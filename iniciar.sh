@@ -5,7 +5,7 @@ while :
 do
 
     echo "-----Configuração-----"
-    echo "IP: $IP (Apenas para o cliente)\nPORTA: $PORTA"
+    echo "IP: $IP\nPORTA: $PORTA"
     echo "----------------------"
 
     echo "[1] Cliente\n[2] Servidor de aplicação\n[3] Servidor dos dados"
