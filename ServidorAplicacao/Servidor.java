@@ -17,6 +17,7 @@ import java.rmi.registry.Registry;
 public class Servidor {
 
     private static int PORTA;
+    private static String IP;
 
     Servidor() {
         try {
@@ -42,7 +43,8 @@ public class Servidor {
     }
     
     public static void main(String[] args) {
-        PORTA = Integer.parseInt(args[0]);
+        IP = args[0];
+        PORTA = Integer.parseInt(args[1]);
         new Servidor();
     }
 }

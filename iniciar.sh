@@ -22,7 +22,7 @@ do
         2)
             cd ServidorAplicacao
             javac *.java
-            java Servidor $PORTA
+            java Servidor $IP $PORTA
             rm *.class
             cd ..
         ;;
@@ -30,7 +30,7 @@ do
             echo "Em construção"
             # cd ServidorDados
             # javac *.java
-            # java Servidor $PORTA
+            # java Servidor $IP $PORTA
             # rm *.class
             # cd ..
         ;;
