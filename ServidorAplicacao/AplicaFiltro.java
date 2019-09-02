@@ -29,7 +29,6 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
     
     @Override
     public byte[] aplicaFiltro(byte[] img) throws RemoteException {
-        System.out.println("alo");
         try {
 
             BufferedImage image = javax.imageio.ImageIO.read(new ByteArrayInputStream(img));

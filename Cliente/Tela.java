@@ -144,6 +144,8 @@ public class Tela extends javax.swing.JFrame {
 
     private void button_LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_LimparActionPerformed
         // TODO add your handling code here:
+        label_comF.setIcon(null);
+        label_semF.setIcon(null);
     }//GEN-LAST:event_button_LimparActionPerformed
 
     private void button_ConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConvertActionPerformed
@@ -172,6 +174,7 @@ public class Tela extends javax.swing.JFrame {
             Image image = ii.getImage();
             Image newimg = image.getScaledInstance(215, 175,  java.awt.Image.SCALE_SMOOTH);
             
+            label_semF.setIcon(null);
             label_comF.setIcon(new ImageIcon(newimg));
         } catch (Exception e) {
             e.printStackTrace();

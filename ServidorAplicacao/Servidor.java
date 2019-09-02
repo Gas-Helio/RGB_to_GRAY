@@ -21,7 +21,7 @@ public class Servidor {
 
     Servidor() {
         try {
-           System.setProperty("java.rmi.server.hostname", "localhost");
+           System.setProperty("java.rmi.server.hostname", IP);
 //            LocateRegistry.createRegistry(12345);           
             AplicaFiltroInterface afi = new AplicaFiltro();
 //            Naming.bind("AplicaFiltro", (Remote) afi);
