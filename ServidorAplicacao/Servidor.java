@@ -46,5 +46,6 @@ public class Servidor {
         IP = args[0];
         PORTA = Integer.parseInt(args[1]);
         new Servidor();
+        // new TelaServidor().setVisible(true);
     }
 }

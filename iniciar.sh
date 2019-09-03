@@ -21,7 +21,7 @@ do
         ;;
         2)
             cd ServidorAplicacao
-            javac *.java
+            javac *.java -Xlint
             java Servidor $IP $PORTA
             rm *.class
             cd ..

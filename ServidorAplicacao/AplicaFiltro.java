@@ -21,11 +21,16 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
     
     private static final long serialVersionUID = 1L;
     private static int red, green, blue, newRGB;
+    private static TelaServidor ta;
     
     protected AplicaFiltro() throws RemoteException{
         super();
+        ta = new TelaServidor();
+        ta.setVisible(true);
         
     }
+
+    
     
     @Override
     public byte[] aplicaFiltro(byte[] img) throws RemoteException {
@@ -34,7 +39,7 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
             BufferedImage image = javax.imageio.ImageIO.read(new ByteArrayInputStream(img));
 
             System.out.println("Imagem recebida");
-            
+            ta.addMessagem("Imagem recebida");
             // System.out.println(image.getHeight()+" x "+image.getWidth());
 
             for(int x=0; x < image.getHeight(); x++) {
@@ -57,6 +62,7 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
                 }
             }
             System.out.println("Imagem convertida");
+            ta.addMessagem("Imagem recebida");
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             javax.imageio.ImageIO.write(image, "jpg", baos);
