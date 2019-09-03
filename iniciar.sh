@@ -27,12 +27,12 @@ do
             cd ..
         ;;
         3)
-            echo "Em construção"
-            # cd ServidorDados
-            # javac *.java
-            # java Servidor $IP $PORTA
-            # rm *.class
-            # cd ..
+            #echo "Em construção"
+            cd ServidorDados
+            javac *.java
+            java TelaServidor $IP $PORTA
+            rm *.class
+            cd ..
         ;;
         4)
             read -p "Nova IP: " IP
