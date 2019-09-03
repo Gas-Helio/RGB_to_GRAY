@@ -1,2 +1,2 @@
 # RGB_to_GRAY
-Aplicação SD: Interface grafica - Aplicação - Bando de dados
+Aplicação SD: Interface gráfica - Aplicação - Banco de dados
