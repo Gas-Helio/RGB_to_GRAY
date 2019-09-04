@@ -174,7 +174,7 @@ public class Tela extends javax.swing.JFrame {
             Image image = ii.getImage();
             Image newimg = image.getScaledInstance(215, 175,  java.awt.Image.SCALE_SMOOTH);
             
-            label_semF.setIcon(null);
+            // label_semF.setIcon(null);
             label_comF.setIcon(new ImageIcon(newimg));
         } catch (Exception e) {
             e.printStackTrace();
