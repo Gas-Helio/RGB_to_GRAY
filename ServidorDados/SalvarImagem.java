@@ -3,12 +3,18 @@
  */
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import javax.imageio.*;
 
 public class SalvarImagem extends UnicastRemoteObject implements SalvaImagemInterface {
     
     private static TelaServidor ts;
     private static final long serialVersionUID = 1L;
     private static int cont = 0;
+
     private static String path = "../imagens/";
     
     SalvarImagem() throws RemoteException{
