@@ -30,8 +30,6 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
         
     }
 
-    
-    
     @Override
     public byte[] aplicaFiltro(byte[] img) throws RemoteException {
         try {
@@ -69,6 +67,7 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
             return baos.toByteArray(); 
         }  catch (Exception e) {
             System.out.println("Erro ao converter");
+            ta.addMessagem("Erro ao converter");
             System.out.println(e.getMessage());
             return img;
         }

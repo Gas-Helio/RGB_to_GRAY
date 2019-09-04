@@ -30,7 +30,7 @@ do
             #echo "Em construção"
             cd ServidorDados
             javac *.java
-            java TelaServidor $IP $PORTA
+            java Servidor $IP $PORTA
             rm *.class
             cd ..
         ;;
