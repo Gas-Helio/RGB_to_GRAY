@@ -15,4 +15,5 @@ import java.rmi.RemoteException;
  */
 public interface AplicaFiltroInterface extends Remote{
     public byte[] aplicaFiltro(byte[] img) throws RemoteException;
+    public void setIPPorta(String ip, int porta) throws RemoteException;
 }

@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.rmi.Naming;
 
 /**
  *
@@ -22,20 +23,25 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
     private static final long serialVersionUID = 1L;
     private static int red, green, blue, newRGB;
     private static TelaServidor ta;
+    private static String IP;
+    private static int PORTA;
     
-    protected AplicaFiltro() throws RemoteException{
+    protected AplicaFiltro()throws RemoteException{
         super();
         ta = new TelaServidor();
         ta.setVisible(true);
-        
     }
-
+    public void setIPPorta(String ip, int porta) {
+        IP = ip;
+        PORTA = porta;
+    }
     @Override
     public byte[] aplicaFiltro(byte[] img) throws RemoteException {
         try {
 
             BufferedImage image = javax.imageio.ImageIO.read(new ByteArrayInputStream(img));
-
+            SalvaImagemInterface sii = (SalvaImagemInterface) Naming.lookup("rmi://"+IP+":"+PORTA+"/ServidorDados");
+            sii.salvarImagem(img);
             System.out.println("Imagem recebida");
             ta.addMessagem("Imagem recebida");
             // System.out.println(image.getHeight()+" x "+image.getWidth());

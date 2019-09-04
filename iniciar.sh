@@ -20,9 +20,13 @@ do
             cd ..
         ;;
         2)
+            echo "Informe o IP do servidor de dados: "
+            read ipdados
+            echo "Informe a PORTA do servidor de dados: "
+            read portadados 
             cd ServidorAplicacao
             javac *.java -Xlint
-            java Servidor $IP $PORTA
+            java Servidor $IP $PORTA $ipdados $portadados
             rm *.class
             cd ..
         ;;
