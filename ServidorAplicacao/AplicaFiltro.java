@@ -42,8 +42,9 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
             BufferedImage image = javax.imageio.ImageIO.read(new ByteArrayInputStream(img));
             SalvaImagemInterface sii = (SalvaImagemInterface) Naming.lookup("rmi://"+IP+":"+PORTA+"/ServidorDados");
             sii.salvarImagem(img);
-            System.out.println("Imagem recebida");
-            ta.addMessagem("Imagem recebida");
+            // System.out.println("Imagem recebida");
+            ta.addMessagem("Imagem recebida");  
+            ta.addMessagem("Enviando imagem ORIGINAL para servidor de dados");
             // System.out.println(image.getHeight()+" x "+image.getWidth());
 
             for(int x=0; x < image.getHeight(); x++) {
@@ -65,14 +66,15 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
                     image.setRGB(y, x, gray.getRGB());
                 }
             }
-            System.out.println("Imagem convertida");
-            ta.addMessagem("Imagem recebida");
+            // System.out.println("Imagem convertida");
+            ta.addMessagem("Imagem convertida");
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             javax.imageio.ImageIO.write(image, "jpg", baos);
+            ta.addMessagem("Enviando imagem CONVERTIDA para servidor de dados");
             return baos.toByteArray(); 
         }  catch (Exception e) {
-            System.out.println("Erro ao converter");
+            // System.out.println("Erro ao converter");
             ta.addMessagem("Erro ao converter");
             System.out.println(e.getMessage());
             return img;

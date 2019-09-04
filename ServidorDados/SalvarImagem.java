@@ -8,6 +8,8 @@ public class SalvarImagem extends UnicastRemoteObject implements SalvaImagemInte
     
     private static TelaServidor ts;
     private static final long serialVersionUID = 1L;
+    private static int cont = 0;
+    private static String path = "../imagens/";
     
     SalvarImagem() throws RemoteException{
         ts = new TelaServidor();
@@ -15,8 +17,19 @@ public class SalvarImagem extends UnicastRemoteObject implements SalvaImagemInte
     }
     @Override
     public boolean salvarImagem(byte[] img) throws RemoteException{
-        ts.addMessagem("asdasdasdasdas");
-        return true;
+        try {
+            ts.addMessagem("Imagem recebida do servidor de APLICACAO");
+            BufferedImage image = javax.imageio.ImageIO.read(new ByteArrayInputStream(img));
+            File outputfile = new File(path+"image"+cont+".png");
+            cont += 1;
+            ImageIO.write(image, "png", outputfile);
+            ts.addMessagem("Imagem salva em: "+path+"image"+cont+".png");
+            return true;
+        } catch (Exception e) {
+            ts.addMessagem("Erro ao salvar imagem");
+            return false;
+        }
+        
     }
 
 }
