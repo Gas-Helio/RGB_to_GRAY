@@ -72,6 +72,7 @@ public class AplicaFiltro extends UnicastRemoteObject implements AplicaFiltroInt
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             javax.imageio.ImageIO.write(image, "jpg", baos);
             ta.addMessagem("Enviando imagem CONVERTIDA para servidor de dados");
+            sii.salvarImagem(baos.toByteArray());
             return baos.toByteArray(); 
         }  catch (Exception e) {
             // System.out.println("Erro ao converter");
