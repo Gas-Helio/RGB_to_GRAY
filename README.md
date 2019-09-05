@@ -1,7 +1,10 @@
 # RGB_to_GRAY
 Aplicação SD: Interface gráfica - Aplicação - Banco de dados
+
 Sistema para aplicar filtro em uma imagem. 
+
 Será usado 3 maquinas, uma para cada camada, uma para o clinte (interface gráfica), duas para ser os servidores (uma para a aplicação e outro para o banco de dados).
+
 Protocolo de Comunicação: RMI.
 
 ## Iniciando o sistema
